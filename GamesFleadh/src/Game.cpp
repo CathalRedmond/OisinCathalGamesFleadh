@@ -1,3 +1,6 @@
+/// <summary>
+/// @author Cathal Redmond
+/// </summary>
 #include "Game.h"
 
 

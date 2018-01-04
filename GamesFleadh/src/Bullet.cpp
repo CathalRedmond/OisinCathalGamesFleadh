@@ -1,73 +1,62 @@
+/// <summary>
+/// @author Cathal Redmond
+/// </summary>
 #include "Bullet.h"
 
 
 
-Bullet::Bullet(KeyHandler const & t_keyhandler)
-	:
-	m_intialPosition{ ScreenSize::s_width / 2.0f, ScreenSize::s_height / 2.0f }
-	,m_keyHandler{t_keyhandler}
-	,m_velocity{0.0f,0.0f}
+
+
+void Bullet::initialise(sf::Texture const & t_texture, sf::Vector2f t_position, float t_rotation, sf::Vector2f t_direction)
 {
+	m_bulletSprite.setTexture(t_texture);
+	m_bulletSprite.setTextureRect(m_bulletRect);
+	m_bulletSprite.setOrigin(m_bulletRect.width / 2.0f, m_bulletRect.height / 2.0f);
+	m_bulletSprite.setPosition(t_position);
+	m_bulletSprite.setRotation(t_rotation);
+
+	m_direction = (t_direction / (sqrt((t_direction.x * t_direction.x) + (t_direction.y * t_direction.y))));
+
+	m_speed = s_MAX_SPEED;
 }
 
-
-Bullet::~Bullet()
+bool Bullet::update(sf::Time t_deltaTime)
 {
-}
-
-void Bullet::render(sf::RenderWindow & t_window)
-{
-	t_window.draw(m_sprite);
-}
-
-void Bullet::update()
-{
-	handleKeyInput();
-	m_currentPosition += m_velocity;
-	m_sprite.setPosition(m_currentPosition);
-}
-
-void Bullet::setTexture(sf::Texture const & t_texture)
-{
-	m_texture = t_texture;
-	setUpSprite();
-}
-
-void Bullet::setVelocity(sf::Vector2f & t_velocity)
-{
-	m_velocity = t_velocity;
-	m_velocity /= 10.0f;
-}
-
-void Bullet::setIntialPosition(sf::Vector2f & t_position)
-{
-	m_intialPosition = t_position;
-	m_currentPosition = m_intialPosition;
-}
-
-void Bullet::setUpSprite()
-{
-	m_sprite.setTexture(m_texture);
-	m_sprite.setPosition(m_intialPosition);
-	m_sprite.setOrigin(m_sprite.getGlobalBounds().width / 2.0f, m_sprite.getGlobalBounds().height / 2.0f);
-}
-
-void Bullet::handleKeyInput()
-{
-	if (m_keyHandler.isPressed(sf::Keyboard::Left))
+	if (!inUse())
 	{
-		m_velocity = sf::Vector2f(-5.0f,0.0f);
+		// no point in updating if bullet is not in use anymore
+		return false;
 	}
-	if (m_keyHandler.isPressed(sf::Keyboard::Right))
+	
+
+	sf::Vector2f position = m_bulletSprite.getPosition();
+	sf::Vector2f newPosition = position + (m_direction * m_speed * (t_deltaTime.asMilliseconds()/1000.0f));
+
+	m_bulletSprite.setPosition(newPosition);
+
+	if (!isOnScreen(newPosition))
 	{
-		m_velocity = sf::Vector2f(5.0f, 0.0f);
+		m_speed = 0;
 	}
-	if (m_keyHandler.isPressed(sf::Keyboard::Up))
-	{
-		m_velocity = sf::Vector2f(0.0f, -5.0f);
-	}
-	if (m_keyHandler.isPressed(sf::Keyboard::Down))
-	{
-		m_velocity = sf::Vector2f(0.0f, 5.0f);
-	}
+	return m_speed == s_MAX_SPEED;
+}
+
+bool Bullet::inUse() const
+{
+	return m_speed == s_MAX_SPEED;
+}
+
+
+
+bool Bullet::isOnScreen(sf::Vector2f t_position) const
+{
+	return t_position.x - m_bulletRect.width / 2.0f > 0.0f
+		&& t_position.x + m_bulletRect.width / 2.0f < ScreenSize::s_width
+		&& t_position.y - m_bulletRect.height / 2.0f > 0.0f
+		&& t_position.y + m_bulletRect.height / 2.0f < ScreenSize::s_height;
+}
+
+float Bullet::degreesToRadians(float angleInDegrees)
+{
+	return 0.0f;
 }

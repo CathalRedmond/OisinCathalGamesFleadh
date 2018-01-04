@@ -1,0 +1,12 @@
+﻿  Player.cpp
+c:\users\cathal\desktop\oisincathalgamesfleadh\gamesfleadh\src\player.cpp(18): warning C4244: 'argument': conversion from 'double' to 'sf::Int32', possible loss of data
+  main.cpp
+  KeyHandler.cpp
+  GameplayScreen.cpp
+  Game.cpp
+  Controller.cpp
+  BulletPool.cpp
+  Bullet.cpp
+  Generating Code...
+  GamesFleadh.vcxproj -> C:\Users\Cathal\Desktop\OisinCathalGamesFleadh\GamesFleadh\Debug\GamesFleadh.exe
+  GamesFleadh.vcxproj -> C:\Users\Cathal\Desktop\OisinCathalGamesFleadh\GamesFleadh\Debug\GamesFleadh.pdb (Partial PDB)

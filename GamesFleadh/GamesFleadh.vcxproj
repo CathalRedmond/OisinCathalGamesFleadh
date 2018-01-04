@@ -19,23 +19,25 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Controller.cpp" />
-    <ClCompile Include="KeyHandler.cpp" />
     <ClCompile Include="src\Bullet.cpp" />
+    <ClCompile Include="src\BulletPool.cpp" />
+    <ClCompile Include="src\Controller.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\GameplayScreen.cpp" />
+    <ClCompile Include="src\KeyHandler.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Player.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Controller.h" />
     <ClInclude Include="include\Bullet.h" />
+    <ClInclude Include="include\BulletPool.h" />
+    <ClInclude Include="include\Controller.h" />
     <ClInclude Include="include\Enums.h" />
     <ClInclude Include="include\Game.h" />
     <ClInclude Include="include\GameplayScreen.h" />
+    <ClInclude Include="include\KeyHandler.h" />
     <ClInclude Include="include\Player.h" />
-    <ClInclude Include="KeyHandler.h" />
-    <ClInclude Include="ScreenSize.h" />
+    <ClInclude Include="include\ScreenSize.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

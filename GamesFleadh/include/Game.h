@@ -1,3 +1,6 @@
+/// <summary>
+/// @author Cathal Redmond
+/// </summary>
 #ifndef GAME_H
 #define GAME_H
 
@@ -8,6 +11,7 @@
 #include "KeyHandler.h"
 #include <iostream>
 
+// forward referencing
 class GameplayScreen;
 
 /// <summary>
@@ -36,6 +40,7 @@ private:
 	// render window used for the game
 	sf::RenderWindow m_window;
 
+	// keyhandler used in the game
 	KeyHandler m_keyhandler;
 	
 

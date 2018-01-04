@@ -1,3 +1,6 @@
+/// <summary>
+/// @author Cathal Redmond
+/// </summary>
 #ifndef GAMEPLAYSCREEN_H
 #define GAMEPLAYSCREEN_H
 
@@ -8,6 +11,9 @@
 #include "Controller.h"
 
 
+/// <summary>
+/// @brief class for the gameplay screen used in the game
+/// </summary>
 class GameplayScreen
 {
 public:
@@ -18,16 +24,21 @@ public:
 	~GameplayScreen();
 private:
 	void handleKeyInput();
-	KeyHandler m_keyhandler;
 	void loadTextures();
 
+	// keyhandler used in the game
+	KeyHandler m_keyhandler;
+
+	// instance of player class
 	Player m_player;
-	Bullet m_bullet;
 
-	sf::Texture m_playerTexture;
-	sf::Texture m_bulletTexture;
 
-	Xbox360Controller m_xbox360Controller;
+
+	// texture used for the player
+	sf::Texture m_spriteSheetTexture;
+
+	// instance of the controller class used in the game
+	Xbox360Controller m_controller;
 
 
 };

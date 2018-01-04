@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Bullet.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -30,17 +27,20 @@
     <ClCompile Include="src\GameplayScreen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="KeyHandler.cpp">
+    <ClCompile Include="src\Controller.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Controller.cpp">
+    <ClCompile Include="src\KeyHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Bullet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BulletPool.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\Bullet.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\Game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -53,13 +53,19 @@
     <ClInclude Include="include\Enums.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ScreenSize.h">
+    <ClInclude Include="include\Controller.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="KeyHandler.h">
+    <ClInclude Include="include\KeyHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Controller.h">
+    <ClInclude Include="include\ScreenSize.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Bullet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\BulletPool.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

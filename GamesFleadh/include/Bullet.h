@@ -1,34 +1,46 @@
+/// <summary>
+/// @author Cathal Redmond
+/// </summary>
 #ifndef BULLET_H
 #define BULLET_H
 
 #include "SFML\Graphics.hpp"
 #include "ScreenSize.h"
-#include "KeyHandler.h"
-#include "Player.h"
 
+
+/// <summary>
+/// @brief class for the bullets used in the game for the player
+/// </summary>
 class Bullet
 {
+
+	friend class BulletPool;
+
+
 public:
-	Bullet(KeyHandler const & t_keyhandler);
-	~Bullet();
-	void render(sf::RenderWindow & t_window);
-	void update();
-	void setTexture(sf::Texture const & t_texture);
-	void setVelocity(sf::Vector2f & t_velocity);
-	void setIntialPosition(sf::Vector2f & t_position);
+	Bullet() = default;
+	void initialise(sf::Texture const & t_texture, sf::Vector2f t_position, float t_rotation, sf::Vector2f t_direction);
+	bool update(sf::Time t_deltaTime);
+	bool inUse() const;
 private:
-	void setUpSprite();
-	void handleKeyInput();
 
+	bool Bullet::isOnScreen(sf::Vector2f t_position) const;
 
-	KeyHandler const & m_keyHandler;
+	// Max speed of the bullet
+	static constexpr float s_MAX_SPEED{ 1000.0 };
 
-	sf::Texture m_texture;
-	sf::Sprite m_sprite;
+	// movement speed
+	float m_speed{ s_MAX_SPEED };
 
-	sf::Vector2f m_intialPosition;
-	sf::Vector2f m_velocity;
-	sf::Vector2f m_currentPosition;
+	// the bullet sprite
+	sf::Sprite m_bulletSprite;
+
+	// texture of the bullet sprite
+	sf::IntRect m_bulletRect{110,0,50,50};
+
+	float degreesToRadians(float angleInDegrees);
+
+	sf::Vector2f m_direction;
 };
 
 
